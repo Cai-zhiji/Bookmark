@@ -1,0 +1,451 @@
+{
+  "categories": [
+    {
+      "name": "AI",
+      "bookmarks": [
+        {
+          "url": "https://chat.deepseek.com/",
+          "title": "DeepSeek",
+          "description": "深度求索 AI 对话平台",
+          "icon": "/icons/chat.deepseek.com.png"
+        },
+        {
+          "url": "https://platform.deepseek.com/usage",
+          "title": "DeepSeek 开放平台",
+          "description": "DeepSeek API 用量管理",
+          "icon": "/icons/platform.deepseek.com.png"
+        },
+        {
+          "url": "https://chatglm.cn/main/alltoolsdetail?t=1780187033948&lang=zh",
+          "title": "ChatGLM 工具集",
+          "description": "智谱 AI 工具聚合页面",
+          "icon": "/icons/chatglm.cn.png"
+        },
+        {
+          "url": "https://console.juhenextvip.com/dashboard/overview",
+          "title": "JuheNext 控制台",
+          "description": "聚合 API 管理控制台",
+          "icon": "/icons/console.juhenextvip.com.png"
+        }
+      ]
+    },
+    {
+      "name": "中医",
+      "bookmarks": [
+        {
+          "url": "https://qihuang.vip/",
+          "title": "岐黄 VIP",
+          "description": "中医学习资源平台",
+          "icon": "/icons/qihuang.vip.png"
+        },
+        {
+          "url": "https://www.wiki8.cn/guji/books",
+          "title": "Wiki8 古籍",
+          "description": "中医古籍在线阅览",
+          "icon": "/icons/www.wiki8.cn.png"
+        }
+      ]
+    },
+    {
+      "name": "资源聚合",
+      "bookmarks": [],
+      "subcategories": [
+        {
+          "name": "影视",
+          "bookmarks": [
+            {
+              "url": "https://www.bilibili.com/",
+              "title": "哔哩哔哩",
+              "description": "国内领先的视频弹幕网站",
+              "icon": "/icons/www.bilibili.com.png"
+            },
+            {
+              "url": "https://www.youtube.com/",
+              "title": "YouTube",
+              "description": "全球最大的视频分享平台",
+              "icon": "/icons/www.youtube.com.png"
+            },
+            {
+              "url": "https://axutongxue.space/",
+              "title": "阿虚同学的储物间",
+              "description": "资源分享与实用工具集合",
+              "icon": "/icons/axutongxue.space.png"
+            }
+          ]
+        },
+        {
+          "name": "电子书",
+          "bookmarks": [
+            {
+              "url": "https://annas-archive.org/",
+              "title": "Anna's Archive",
+              "description": "全球最大的开源图书馆搜索引擎",
+              "icon": "/icons/annas-archive.org.png"
+            },
+            {
+              "url": "https://book.douban.com/",
+              "title": "豆瓣读书",
+              "description": "图书评分、书评与发现平台",
+              "icon": "/icons/book.douban.com.png"
+            },
+            {
+              "url": "https://zlib.by/",
+              "title": "Z-Library",
+              "description": "全球最大的电子书库",
+              "icon": "/icons/zlib.by.png"
+            }
+          ]
+        },
+        {
+          "name": "AI 工具",
+          "bookmarks": [
+            {
+              "url": "https://ai-bot.cn/",
+              "title": "AI 工具集",
+              "description": "AI 工具导航与资源聚合",
+              "icon": "/icons/ai-bot.cn.png"
+            }
+          ]
+        },
+        {
+          "name": "综合资源",
+          "bookmarks": [
+            {
+              "url": "https://adzhp.cc/",
+              "title": "爱达杂货铺",
+              "description": "综合资源分享导航站",
+              "icon": "/icons/adzhp.cc.png"
+            }
+          ]
+        },
+        {
+          "name": "网盘资源搜索",
+          "bookmarks": [
+            {
+              "url": "https://www.upyunso.com/",
+              "title": "云盘搜索",
+              "description": "多网盘资源搜索引擎",
+              "icon": "/icons/www.upyunso.com.png"
+            },
+            {
+              "url": "https://pan666.net/",
+              "title": "Pan666",
+              "description": "网盘资源聚合搜索",
+              "icon": "/icons/pan666.net.png"
+            }
+          ]
+        },
+        {
+          "name": "软件",
+          "bookmarks": [
+            {
+              "url": "https://www.yuque.com/u21320519/kb/pxhb1a",
+              "title": "语雀软件清单",
+              "description": "精选软件知识库合集",
+              "icon": "/icons/www.yuque.com.png"
+            },
+            {
+              "url": "https://blog.laoplayer.com/",
+              "title": "老玩家博客",
+              "description": "软件分享与技术博客",
+              "icon": "/icons/blog.laoplayer.com.png"
+            },
+            {
+              "url": "https://www.benxiaotu.com/page/2/",
+              "title": "笨小兔",
+              "description": "软件资源分享站",
+              "icon": "/icons/www.benxiaotu.com.png"
+            },
+            {
+              "url": "https://macked.app/?s=adobe",
+              "title": "Macked",
+              "description": "macOS 软件资源站",
+              "icon": "/icons/macked.app.png"
+            },
+            {
+              "url": "https://formulae.brew.sh/cask/",
+              "title": "Homebrew Cask",
+              "description": "macOS 应用命令行安装配方",
+              "icon": "/icons/formulae.brew.sh.png"
+            },
+            {
+              "url": "https://www.better365.com",
+              "title": "Better365",
+              "description": "Mac 效率工具集合",
+              "icon": "/icons/www.better365.com.png"
+            }
+          ]
+        },
+        {
+          "name": "PPT",
+          "bookmarks": [
+            {
+              "url": "https://www.hippter.com/",
+              "title": "Hippter",
+              "description": "PPT 模板与设计资源导航",
+              "icon": "/icons/www.hippter.com.png"
+            }
+          ]
+        },
+        {
+          "name": "游戏",
+          "bookmarks": [
+            {
+              "url": "https://www.gamer520.com/",
+              "title": "Gamer520",
+              "description": "游戏资讯与资源分享",
+              "icon": "/icons/www.gamer520.com.png"
+            },
+            {
+              "url": "https://boardgamearena.com/lobby",
+              "title": "Board Game Arena",
+              "description": "在线桌游对战平台",
+              "icon": "/icons/boardgamearena.com.png"
+            },
+            {
+              "url": "https://op.gg/zh-cn/lol/champions",
+              "title": "OP.GG",
+              "description": "英雄联盟数据与攻略",
+              "icon": "/icons/op.gg.png"
+            }
+          ]
+        },
+        {
+          "name": "文献",
+          "bookmarks": [
+            {
+              "url": "https://flk.npc.gov.cn/index",
+              "title": "国家法律法规数据库",
+              "description": "中国法律法规全文检索",
+              "icon": "/icons/flk.npc.gov.cn.png"
+            },
+            {
+              "url": "http://zjisa.zjlib.cn//home/zy_home.jsp",
+              "title": "浙江图书馆数字资源",
+              "description": "浙江省图书馆数字资源门户",
+              "icon": "/icons/zjisa.zjlib.cn.png"
+            },
+            {
+              "url": "https://www.ablesci.com/",
+              "title": "AbleSci",
+              "description": "科研学术资源导航",
+              "icon": "/icons/www.ablesci.com.png"
+            },
+            {
+              "url": "https://www.marxists.org/chinese/index.html",
+              "title": "马克思主义文库",
+              "description": "中文马克思主义文献库",
+              "icon": "/icons/www.marxists.org.png"
+            },
+            {
+              "url": "https://www.x-mol.com/",
+              "title": "X-MOL",
+              "description": "科学知识平台与文献检索",
+              "icon": "/icons/www.x-mol.com.png"
+            },
+            {
+              "url": "https://www.sciencedirect.com/",
+              "title": "ScienceDirect",
+              "description": "Elsevier 学术文献数据库",
+              "icon": "/icons/www.sciencedirect.com.png"
+            },
+            {
+              "url": "https://www.bzsb.info/public/articleHtml/HB_18437_1_view.html?reurl=NB/T...",
+              "title": "标准信息库",
+              "description": "行业标准文档查阅",
+              "icon": "/icons/www.bzsb.info.png"
+            },
+            {
+              "url": "https://www.bzfxw.com/soft/sort055/",
+              "title": "标准分享网",
+              "description": "标准规范文档下载",
+              "icon": "/icons/www.bzfxw.com.png"
+            },
+            {
+              "url": "https://std.samr.gov.cn/",
+              "title": "国家标准信息平台",
+              "description": "国家市场监督管理总局标准",
+              "icon": "/icons/std.samr.gov.cn.png"
+            },
+            {
+              "url": "https://www.ndls.org.cn/standard/index?keyword=NB/T 11573-2024",
+              "title": "国家数字图书馆标准",
+              "description": "国家数字图书馆标准检索",
+              "icon": "/icons/www.ndls.org.cn.png"
+            }
+          ]
+        },
+        {
+          "name": "编程",
+          "bookmarks": [
+            {
+              "url": "https://roadmap.sh/frontend",
+              "title": "Frontend Roadmap",
+              "description": "前端开发学习路线图",
+              "icon": "/icons/roadmap.sh.png"
+            },
+            {
+              "url": "https://developer.mozilla.org/zh-CN/docs/Learn_web_development",
+              "title": "MDN Web 开发教程",
+              "description": "Mozilla 官方前端开发指南",
+              "icon": "/icons/developer.mozilla.org.png"
+            },
+            {
+              "url": "https://csdiy.wiki/",
+              "title": "CS 自学指南",
+              "description": "计算机科学自学路径导航",
+              "icon": "/icons/csdiy.wiki.png"
+            },
+            {
+              "url": "https://github.com/izackwu/TeachYourselfCS-CN/blob/master/TeachYourselfCS-CN.md",
+              "title": "TeachYourselfCS 中文版",
+              "description": "自学计算机科学经典指南",
+              "icon": "/icons/github.com.png"
+            }
+          ]
+        },
+        {
+          "name": "社区",
+          "bookmarks": [
+            {
+              "url": "https://github.com/",
+              "title": "GitHub",
+              "description": "全球最大的代码托管与协作平台",
+              "icon": "/icons/github.com.png"
+            },
+            {
+              "url": "https://gitee.com/",
+              "title": "Gitee",
+              "description": "国内代码托管协作平台",
+              "icon": "/icons/gitee.com.png"
+            },
+            {
+              "url": "https://stackoverflow.com/questions",
+              "title": "Stack Overflow",
+              "description": "全球最大的程序员问答社区",
+              "icon": "/icons/stackoverflow.com.png"
+            },
+            {
+              "url": "https://huggingface.co/",
+              "title": "Hugging Face",
+              "description": "AI 模型与数据集社区",
+              "icon": "/icons/huggingface.co.png"
+            },
+            {
+              "url": "https://sspai.com/?utm_source=infinitynewtab",
+              "title": "少数派",
+              "description": "数字生活与效率指南社区",
+              "icon": "/icons/sspai.com.png"
+            },
+            {
+              "url": "http://gold.xitu.io/?utm_source=infinitynewtab.com",
+              "title": "掘金",
+              "description": "开发者技术社区",
+              "icon": "/icons/gold.xitu.io.png"
+            }
+          ]
+        },
+        {
+          "name": "VPN",
+          "bookmarks": [
+            {
+              "url": "https://tyty.click/",
+              "title": "TYTY",
+              "description": "网络工具服务",
+              "icon": "/icons/tyty.click.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "工具箱",
+      "bookmarks": [
+        {
+          "url": "https://dict.eudic.net/",
+          "title": "欧路词典",
+          "description": "多语种在线词典与翻译",
+          "icon": "/icons/dict.eudic.net.png"
+        },
+        {
+          "url": "https://um-react.netlify.app/",
+          "title": "UM React",
+          "description": "React Hooks 工具库文档",
+          "icon": "/icons/um-react.netlify.app.png"
+        },
+        {
+          "url": "https://accounts.woozooo.com/accounts.php?action=login&ref=up.woozooo.com",
+          "title": "WoooZooo 网盘",
+          "description": "在线文件存储与管理",
+          "icon": "/icons/accounts.woozooo.com.png"
+        },
+        {
+          "url": "https://www.alltoall.net/",
+          "title": "AllToAll",
+          "description": "在线文件格式转换工具",
+          "icon": "/icons/www.alltoall.net.png"
+        },
+        {
+          "url": "https://picgo.github.io/PicGo-Doc/zh/guide/",
+          "title": "PicGo 文档",
+          "description": "图床工具 PicGo 使用指南",
+          "icon": "/icons/picgo.github.io.png"
+        },
+        {
+          "url": "https://sms-activate.guru/cn",
+          "title": "SMS-Activate",
+          "description": "海外手机号验证码接码平台",
+          "icon": "/icons/sms-activate.guru.png"
+        },
+        {
+          "url": "https://weread.qq.com/",
+          "title": "微信读书",
+          "description": "腾讯旗下电子书阅读平台",
+          "icon": "/icons/weread.qq.com.png"
+        },
+        {
+          "url": "https://mail.google.com/mail/u/0/#inbox",
+          "title": "Gmail",
+          "description": "Google 邮件服务",
+          "icon": "/icons/mail.google.com.png"
+        },
+        {
+          "url": "https://wx.mail.qq.com/list/readtemplate?name=login_jump.html",
+          "title": "QQ 邮箱",
+          "description": "腾讯 QQ 邮箱网页版",
+          "icon": "/icons/wx.mail.qq.com.png"
+        },
+        {
+          "url": "https://portal.qiniu.com/signin?redirect=%2Fhome",
+          "title": "七牛云",
+          "description": "云存储与 CDN 服务",
+          "icon": "/icons/portal.qiniu.com.png"
+        },
+        {
+          "url": "https://mail.163.com/?msg=authfail#return",
+          "title": "163 邮箱",
+          "description": "网易 163 邮箱网页版",
+          "icon": "/icons/mail.163.com.png"
+        },
+        {
+          "url": "https://outlook.live.com/mail/",
+          "title": "Outlook",
+          "description": "微软 Outlook 邮件服务",
+          "icon": "/icons/outlook.live.com.png"
+        },
+        {
+          "url": "https://docs.qq.com/desktop/",
+          "title": "腾讯文档",
+          "description": "在线协作文档编辑器",
+          "icon": "/icons/docs.qq.com.png"
+        },
+        {
+          "url": "https://tinify.cn/",
+          "title": "TinyPNG",
+          "description": "在线图片智能压缩工具",
+          "icon": "/icons/tinify.cn.png"
+        }
+      ]
+    }
+  ]
+}

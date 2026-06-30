@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "designSystem": {
+    "slug": "notion",
+    "path": "design-systems/notion"
+  },
+  "skill": {
+    "slug": "web-prototype-taste-soft",
+    "path": "design-templates/web-prototype-taste-soft",
+    "kind": "design-template",
+    "mode": "prototype"
+  },
+  "boundAt": "2026-06-30T07:40:00Z"
+}

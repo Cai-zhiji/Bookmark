@@ -1,0 +1,306 @@
+@import "tailwindcss";
+
+/* Notion Design System — Warm Minimalism */
+/* Design tokens from Notion DESIGN.md */
+
+@theme {
+  /* === Canvas === */
+  --color-canvas: #ffffff;
+  --color-canvas-warm: #f6f5f4;
+
+  /* === Foreground === */
+  --color-foreground: rgba(0, 0, 0, 0.95);
+  --color-text-secondary: #615d59;
+  --color-text-muted: #a39e98;
+
+  /* === Notion Blue Accent === */
+  --color-accent: #0075de;
+  --color-accent-hover: #005bab;
+  --color-accent-focus: #097fe8;
+  --color-accent-light: #62aef0;
+
+  /* === Warm Neutral Scale === */
+  --color-warm-dark: #31302e;
+  --color-warm-500: #615d59;
+  --color-warm-300: #a39e98;
+
+  /* === Semantic === */
+  --color-success: #1aae39;
+  --color-warning: #dd5b00;
+  --color-purple: #391c57;
+  --color-teal: #2a9d99;
+
+  /* === Badge === */
+  --color-badge-bg: #f2f9ff;
+  --color-badge-text: #097fe8;
+
+  /* === Border === */
+  --color-border-whisper: rgba(0, 0, 0, 0.1);
+
+  /* === Font Family === */
+  --font-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* === Shadow Stacks === */
+  --shadow-card: rgba(0, 0, 0, 0.04) 0px 4px 18px, rgba(0, 0, 0, 0.027) 0px 2.025px 7.84688px, rgba(0, 0, 0, 0.02) 0px 0.8px 2.925px, rgba(0, 0, 0, 0.01) 0px 0.175px 1.04062px;
+  --shadow-deep: rgba(0, 0, 0, 0.01) 0px 1px 3px, rgba(0, 0, 0, 0.02) 0px 3px 7px, rgba(0, 0, 0, 0.02) 0px 7px 15px, rgba(0, 0, 0, 0.04) 0px 14px 28px, rgba(0, 0, 0, 0.05) 0px 23px 52px;
+
+  /* === Border Radius === */
+  --radius-micro: 4px;
+  --radius-standard: 12px;
+  --radius-featured: 16px;
+  --radius-pill: 9999px;
+}
+
+/* === Base Styles === */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-canvas);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Ambient Mesh Blob (Soft Premium) === */
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(2%, -1%) scale(1.05); }
+  50% { transform: translate(-1%, 2%) scale(0.95); }
+  75% { transform: translate(-2%, -2%) scale(1.02); }
+}
+
+.ambient-mesh {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 40%,
+    rgba(0, 117, 222, 0.04) 0%,
+    transparent 60%
+  ),
+  radial-gradient(
+    ellipse 40% 40% at 70% 60%,
+    rgba(0, 117, 222, 0.03) 0%,
+    transparent 50%
+  );
+  animation: drift 28s ease-in-out infinite;
+}
+
+/* === Whisper Border Utility === */
+.whisper-border {
+  border: 1px solid var(--color-border-whisper);
+}
+
+/* === Card Base === */
+.card-base {
+  background: var(--color-canvas);
+  border: 1px solid var(--color-border-whisper);
+  border-radius: var(--radius-standard);
+  box-shadow: var(--shadow-card);
+}
+
+/* === Double-Bezel Card (Soft Premium) === */
+.double-bezel {
+  padding: 0.375rem;  /* ~p-1.5 */
+  border: 1px solid var(--color-border-whisper);
+  border-radius: var(--radius-standard);
+  box-shadow: var(--shadow-card);
+  background: var(--color-canvas);
+}
+
+.double-bezel-inner {
+  background: var(--color-canvas-warm);
+  border-radius: calc(var(--radius-standard) - 0.375rem);
+  padding: 1rem;
+  height: 100%;
+}
+
+/* === Scrollbar Styling === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-whisper);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* === Floating Particles (playful decorative element) === */
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(40px) scale(1);
+    opacity: 0;
+  }
+}
+
+.floating-particle {
+  position: fixed;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 0;
+  animation: float-up linear infinite;
+}
+
+/* === Card Shimmer (hover effect) === */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.shimmer-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,255,255,0.5) 45%,
+    rgba(255,255,255,0.7) 50%,
+    rgba(255,255,255,0.5) 55%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.group:hover .shimmer-overlay {
+  animation: shimmer 0.8s ease-out forwards;
+}
+
+/* === Section heading animated underline === */
+@keyframes underline-grow {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.heading-underline {
+  position: relative;
+}
+.heading-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--color-accent);
+  border-radius: 1px;
+  transition: width 0.6s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.heading-underline.visible::after {
+  width: 100%;
+}
+
+/* === Subtle dot pattern background === */
+.dot-pattern {
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* === Page loading pulse === */
+@keyframes page-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.page-enter {
+  animation: page-enter 0.6s ease-out;
+}
+
+/* === Noise Texture Overlay === */
+@keyframes noise {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  animation: noise 0.5s steps(1) infinite;
+}
+
+/* === Richer Ambient Mesh === */
+.ambient-mesh {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 50% 40% at 30% 30%, rgba(0, 117, 222, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 45% at 70% 50%, rgba(57, 28, 87, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 50% 70%, rgba(42, 157, 153, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 30% at 80% 20%, rgba(0, 117, 222, 0.03) 0%, transparent 60%);
+  animation: drift 32s ease-in-out infinite;
+}
+
+/* === Floating Particles — richer colors === */
+@keyframes float-up {
+  0%   { transform: translateY(110vh) translateX(0) scale(0) rotate(0deg); opacity: 0; }
+  5%   { opacity: 0.6; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-10vh) translateX(60px) scale(1.2) rotate(180deg); opacity: 0; }
+}
+
+.floating-particle {
+  position: fixed;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 0;
+  animation: float-up linear infinite;
+}
+
+/* === Hover glow pulse for cards === */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.5; }
+}
+
+.glow-dot {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* === Selection style === */
+::selection {
+  background: rgba(0, 117, 222, 0.12);
+  color: var(--color-foreground);
+}
