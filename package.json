@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:server": "tsc -b && vite build --base /",
     "preview": "vite preview",
     "fetch-icons": "node scripts/fetch-icons.mjs"
   },

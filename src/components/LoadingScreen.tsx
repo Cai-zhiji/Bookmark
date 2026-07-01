@@ -89,7 +89,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
               opacity: { duration: 0.7 },
               rotate: { duration: 12, repeat: Infinity, ease: 'linear' },
             }}
-            className="absolute -inset-16"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             viewBox="0 0 160 160"
             width="160"
             height="160"
@@ -116,7 +116,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
               opacity: { duration: 0.7, delay: 0.12 },
               rotate: { duration: 16, repeat: Infinity, ease: 'linear' },
             }}
-            className="absolute -inset-20"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             viewBox="0 0 180 180"
             width="180"
             height="180"
@@ -143,7 +143,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
               opacity: { duration: 0.7, delay: 0.24 },
               rotate: { duration: 8, repeat: Infinity, ease: 'linear' },
             }}
-            className="absolute -inset-10"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             viewBox="0 0 120 120"
             width="120"
             height="120"
