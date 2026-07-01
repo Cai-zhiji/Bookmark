@@ -6,6 +6,8 @@ import Sidebar from './components/Sidebar'
 import Header from './components/Header'
 import SearchBar from './components/SearchBar'
 import SearchEngineToggle from './components/SearchEngineToggle'
+import RecentSection from './components/RecentSection'
+import { RecentProvider } from './context/RecentContext'
 import CategorySection from './components/CategorySection'
 import BookmarkCard from './components/BookmarkCard'
 import Footer from './components/Footer'
@@ -93,6 +95,7 @@ export default function App() {
       {loading ? (
         <LoadingScreen key="loading" onComplete={handleLoadingComplete} />
       ) : (
+        <RecentProvider>
         <motion.div
           key="main"
           initial={{ opacity: 0 }}
@@ -161,6 +164,8 @@ export default function App() {
 
         {/* === Content area === */}
         <div className="px-4 lg:px-6 pb-12">
+          {/* Recently used bookmarks — only when idle */}
+          {!isSearching && !selectedCategory && <RecentSection />}
           {/* Searching state */}
           {isSearching && (
             <div className="pt-1">
@@ -234,6 +239,7 @@ export default function App() {
         <ScrollToTop />
       </main>
         </motion.div>
+        </RecentProvider>
       )}
     </AnimatePresence>
   )

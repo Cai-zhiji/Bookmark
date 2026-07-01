@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import type { Bookmark } from '../types/bookmark'
 import { External } from './Icons'
 import { highlightMatch } from '../utils/highlight'
+import { useRecent } from '../context/RecentContext'
 
 interface BookmarkCardProps {
   bookmark: Bookmark
@@ -29,6 +30,7 @@ export default function BookmarkCard({ bookmark, index, searchQuery }: BookmarkC
   const iconUrl = `${import.meta.env.BASE_URL}icons/${domain}.png`
   const [imgFailed, setImgFailed] = useState(false)
   const tint = CARD_TINTS[index % CARD_TINTS.length]
+  const { addRecent } = useRecent()
 
   return (
     <motion.a
@@ -44,6 +46,7 @@ export default function BookmarkCard({ bookmark, index, searchQuery }: BookmarkC
       }}
       whileHover={{ y: -2, scale: 1.005 }}
       whileTap={{ scale: 0.99 }}
+      onClick={() => addRecent(bookmark)}
       className="group block"
     >
       <div className={`
