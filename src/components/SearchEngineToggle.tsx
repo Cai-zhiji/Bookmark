@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import type { SearchEngine } from '../types/bookmark'
-import { BookmarkIcon, GoogleIcon, BingIcon } from './Icons'
+import { BookmarkIcon, GoogleIcon, BingIcon, YandexIcon } from './Icons'
 
 interface SearchEngineToggleProps {
   engine: SearchEngine
@@ -17,13 +17,18 @@ const ENGINES: EngineOption[] = [
   { key: 'bookmarks', label: '书签', Icon: BookmarkIcon },
   { key: 'google', label: 'Google', Icon: GoogleIcon },
   { key: 'bing', label: 'Bing', Icon: BingIcon },
+  { key: 'yandex', label: 'Yandex', Icon: YandexIcon },
 ]
+
+// Engines that use raster PNG icons (need brightness filter on active state)
+const RASTER_ENGINES: SearchEngine[] = ['bing', 'yandex']
 
 export default function SearchEngineToggle({ engine, onChange }: SearchEngineToggleProps) {
   return (
     <div className="flex items-center justify-center gap-1">
       {ENGINES.map(({ key, label, Icon }) => {
         const isActive = engine === key
+        const isRaster = RASTER_ENGINES.includes(key)
         return (
           <button
             key={key}
@@ -41,7 +46,6 @@ export default function SearchEngineToggle({ engine, onChange }: SearchEngineTog
             aria-pressed={isActive}
             aria-label={`${label}搜索`}
           >
-            {/* Shared layout pill — always rendered, hidden when inactive */}
             <motion.div
               layoutId="engine-pill"
               className="absolute inset-0 rounded-full"
@@ -57,10 +61,10 @@ export default function SearchEngineToggle({ engine, onChange }: SearchEngineTog
               }}
             />
             <span
-              className="relative z-[1]"
-              style={isActive && key === 'bing' ? { filter: 'brightness(0) invert(1)', display: 'flex' } : { display: 'flex' }}
+              className="relative z-[1] flex"
+              style={isActive && isRaster ? { filter: 'brightness(0) invert(1)' } : undefined}
             >
-              <Icon className={`w-3.5 h-3.5 ${isActive && key !== 'bing' ? 'text-white' : ''}`} />
+              <Icon className={`w-3.5 h-3.5 ${isActive && !isRaster ? 'text-white' : ''}`} />
             </span>
             <span className="relative z-[1]">{label}</span>
           </button>

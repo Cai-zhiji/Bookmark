@@ -39,7 +39,7 @@ export default function App() {
     setSearchQuery('')
   }, [setSearchQuery])
 
-  const ENGINE_ORDER: SearchEngine[] = ['bookmarks', 'google', 'bing']
+  const ENGINE_ORDER: SearchEngine[] = ['bookmarks', 'google', 'bing', 'yandex']
 
   const handleTabCycle = useCallback(() => {
     setSearchEngine((prev) => {
@@ -55,6 +55,7 @@ export default function App() {
     const urls: Record<string, string> = {
       google: `https://www.google.com/search?q=${q}`,
       bing: `https://www.bing.com/search?q=${q}`,
+      yandex: `https://yandex.com/search/?text=${q}`,
     }
     const url = urls[searchEngine]
     if (url) window.open(url, '_blank', 'noopener,noreferrer')

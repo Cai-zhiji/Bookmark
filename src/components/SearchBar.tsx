@@ -1,5 +1,5 @@
 import { forwardRef, useCallback } from 'react'
-import { Search, GoogleIcon, BingIcon } from './Icons'
+import { Search, GoogleIcon, BingIcon, YandexIcon } from './Icons'
 import { isMacPlatform } from '../hooks/useKeyboardShortcuts'
 import type { SearchEngine } from '../types/bookmark'
 
@@ -15,6 +15,7 @@ const ENGINE_PLACEHOLDER: Record<SearchEngine, string> = {
   bookmarks: '搜索书签...',
   google: '在 Google 中搜索...',
   bing: '在 Bing 中搜索...',
+  yandex: '在 Yandex 中搜索...',
 }
 
 const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
@@ -88,6 +89,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
           >
             {engine === 'google' && <GoogleIcon className="w-3.5 h-3.5" />}
             {engine === 'bing' && <BingIcon className="w-3.5 h-3.5" />}
+            {engine === 'yandex' && <YandexIcon className="w-3.5 h-3.5" />}
             <kbd
               className="text-[10px] font-medium text-[var(--color-text-muted)]/50 bg-[var(--color-canvas-warm)]
               px-1.5 py-0.5 rounded-[3px] border border-[var(--color-border-whisper)] leading-none"

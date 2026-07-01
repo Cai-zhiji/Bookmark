@@ -18,4 +18,4 @@ export interface BookmarkData {
   categories: Category[]
 }
 
-export type SearchEngine = 'bookmarks' | 'google' | 'bing'
+export type SearchEngine = 'bookmarks' | 'google' | 'bing' | 'yandex'

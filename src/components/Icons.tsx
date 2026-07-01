@@ -130,6 +130,18 @@ export function BingIcon({ className }: IconProps) {
   )
 }
 
+export function YandexIcon({ className }: IconProps) {
+  const yandexSrc = `${import.meta.env.BASE_URL}icons/yandex.png`
+  return (
+    <img
+      src={yandexSrc}
+      alt="Yandex"
+      className={className}
+      style={{ objectFit: 'contain' }}
+    />
+  )
+}
+
 /* ── Category Icons (compact, for sidebar nav) ── */
 
 export function CategorySparkle({ className }: IconProps) {
