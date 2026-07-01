@@ -5,12 +5,13 @@ import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
 import Sidebar from './components/Sidebar'
 import Header from './components/Header'
 import SearchBar from './components/SearchBar'
+import SearchEngineToggle from './components/SearchEngineToggle'
 import CategorySection from './components/CategorySection'
 import BookmarkCard from './components/BookmarkCard'
 import Footer from './components/Footer'
 import FloatingParticles from './components/FloatingParticles'
 import LoadingScreen from './components/LoadingScreen'
-import type { Bookmark } from './types/bookmark'
+import type { Bookmark, SearchEngine } from './types/bookmark'
 import NoiseOverlay from './components/NoiseOverlay'
 import QuoteCarousel from './components/QuoteCarousel'
 import ScrollToTop from './components/ScrollToTop'
@@ -27,10 +28,37 @@ export default function App() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [loading, setLoading] = useState(true)
-  const isSearching = searchQuery.trim().length > 0
+  const [searchEngine, setSearchEngine] = useState<SearchEngine>('bookmarks')
+  const isSearching = searchEngine === 'bookmarks' && searchQuery.trim().length > 0
   const searchInputRef = useRef<HTMLInputElement>(null)
 
   const handleLoadingComplete = useCallback(() => setLoading(false), [])
+
+  const handleEngineChange = useCallback((engine: SearchEngine) => {
+    setSearchEngine(engine)
+    setSearchQuery('')
+  }, [setSearchQuery])
+
+  const ENGINE_ORDER: SearchEngine[] = ['bookmarks', 'google', 'bing']
+
+  const handleTabCycle = useCallback(() => {
+    setSearchEngine((prev) => {
+      const idx = ENGINE_ORDER.indexOf(prev)
+      return ENGINE_ORDER[(idx + 1) % ENGINE_ORDER.length]
+    })
+    setSearchQuery('')
+  }, [setSearchQuery])
+
+  const handleEnterSearch = useCallback(() => {
+    const q = encodeURIComponent(searchQuery.trim())
+    if (!q) return
+    const urls: Record<string, string> = {
+      google: `https://www.google.com/search?q=${q}`,
+      bing: `https://www.bing.com/search?q=${q}`,
+    }
+    const url = urls[searchEngine]
+    if (url) window.open(url, '_blank', 'noopener,noreferrer')
+  }, [searchEngine, searchQuery])
 
   // ── Keyboard shortcuts ──
   useKeyboardShortcuts({
@@ -92,10 +120,23 @@ export default function App() {
       <main className="relative z-[1] lg:ml-56 min-h-screen">
         {/* === Persistent Search Bar (never unmounts — fixes focus loss bug) === */}
         <div className="sticky top-0 z-10 px-4 lg:px-6 pt-6 lg:pt-8 pb-0">
-          <div className="max-w-[640px] mx-auto relative group/search">
-            {/* Glow ring */}
-            <div className="absolute -inset-[3px] rounded-2xl bg-gradient-to-r from-[var(--color-accent)]/20 via-purple-400/10 to-cyan-400/10 blur-md opacity-0 group-focus-within/search:opacity-100 transition-opacity duration-500" />
-            <SearchBar value={searchQuery} onChange={setSearchQuery} ref={searchInputRef} />
+          <div className="max-w-[640px] mx-auto">
+            {/* Search engine toggle — top-left above the search bar */}
+            <div className="mb-2.5">
+              <SearchEngineToggle engine={searchEngine} onChange={handleEngineChange} />
+            </div>
+            {/* Search bar with glow ring */}
+            <div className="relative group/search">
+              <div className="absolute -inset-[3px] rounded-2xl bg-gradient-to-r from-[var(--color-accent)]/20 via-purple-400/10 to-cyan-400/10 blur-md opacity-0 group-focus-within/search:opacity-100 transition-opacity duration-500" />
+              <SearchBar
+                value={searchQuery}
+                onChange={setSearchQuery}
+                engine={searchEngine}
+                onEnter={handleEnterSearch}
+                onTabCycle={handleTabCycle}
+                ref={searchInputRef}
+              />
+            </div>
           </div>
           {/* Category back button */}
           {selectedCategory && !isSearching && (

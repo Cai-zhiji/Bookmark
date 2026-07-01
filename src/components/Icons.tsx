@@ -105,6 +105,31 @@ export function BookmarkIcon({ className }: IconProps) {
   )
 }
 
+/* ── Search Engine Icons ── */
+
+export function GoogleIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 16 16" fill="none">
+      <path d="M14.5 8.18c0-.5-.04-1-.13-1.48H8v2.82h3.65a3.14 3.14 0 0 1-1.36 2.07v1.7h2.2c1.28-1.18 2.01-2.92 2.01-5.11Z" fill="#4285F4" />
+      <path d="M8 14.9c1.83 0 3.37-.6 4.49-1.64l-2.2-1.7c-.6.41-1.38.66-2.29.66-1.76 0-3.25-1.2-3.78-2.8H1.94v1.77A6.75 6.75 0 0 0 8 14.9Z" fill="#34A853" />
+      <path d="M4.22 9.42a4.03 4.03 0 0 1 0-2.58V5.07H1.94a6.74 6.74 0 0 0 0 6.12l2.28-1.77Z" fill="#FBBC05" />
+      <path d="M8 3.84c1 0 1.89.34 2.6 1.01l1.94-1.94A6.7 6.7 0 0 0 8 1.1 6.75 6.75 0 0 0 1.94 5.07l2.28 1.77C4.75 5.04 6.24 3.84 8 3.84Z" fill="#EA4335" />
+    </svg>
+  )
+}
+
+export function BingIcon({ className }: IconProps) {
+  const bingSrc = `${import.meta.env.BASE_URL}icons/bing-color.png`
+  return (
+    <img
+      src={bingSrc}
+      alt="Bing"
+      className={className}
+      style={{ objectFit: 'contain' }}
+    />
+  )
+}
+
 /* ── Category Icons (compact, for sidebar nav) ── */
 
 export function CategorySparkle({ className }: IconProps) {
