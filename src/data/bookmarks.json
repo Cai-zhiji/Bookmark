@@ -26,6 +26,24 @@
           "title": "JuheNext 控制台",
           "description": "聚合 API 管理控制台",
           "icon": "/icons/console.juhenextvip.com.png"
+        },
+        {
+          "url": "https://codex-reset.com/zh/",
+          "title": "Codex 重置追踪",
+          "description": "OpenAI Codex 用量重置追踪与预测",
+          "icon": "/icons/codex-reset.com.png"
+        },
+        {
+          "url": "https://lux.rmaxis.com/",
+          "title": "RM Lux",
+          "description": "桌面 AI Agent 工具下载",
+          "icon": "/icons/lux.rmaxis.com.png"
+        },
+        {
+          "url": "https://www.skills.sh/trending",
+          "title": "Skills.sh 趋势",
+          "description": "AI 技能市场热门趋势",
+          "icon": "/icons/www.skills.sh.png"
         }
       ]
     },
@@ -43,6 +61,12 @@
           "title": "Wiki8 古籍",
           "description": "中医古籍在线阅览",
           "icon": "/icons/www.wiki8.cn.png"
+        },
+        {
+          "url": "https://www.shidianguji.com/",
+          "title": "识典古籍",
+          "description": "古籍数字化在线阅读平台",
+          "icon": "/icons/www.shidianguji.com.png"
         }
       ]
     },
@@ -70,6 +94,12 @@
               "title": "阿虚同学的储物间",
               "description": "资源分享与实用工具集合",
               "icon": "/icons/axutongxue.space.png"
+            },
+            {
+              "url": "https://missav.ws/dm247/cn",
+              "title": "MissAV",
+              "description": "成人视频在线观看",
+              "icon": "/icons/missav.ws.png"
             }
           ]
         },
@@ -342,6 +372,12 @@
               "title": "掘金",
               "description": "开发者技术社区",
               "icon": "/icons/gold.xitu.io.png"
+            },
+            {
+              "url": "https://mp.weixin.qq.com/",
+              "title": "微信公众号",
+              "description": "微信公众号平台",
+              "icon": "/icons/mp.weixin.qq.com.png"
             }
           ]
         },
@@ -444,6 +480,24 @@
           "title": "TinyPNG",
           "description": "在线图片智能压缩工具",
           "icon": "/icons/tinify.cn.png"
+        },
+        {
+          "url": "https://www.135editor.com/",
+          "title": "135 编辑器",
+          "description": "微信图文排版编辑器",
+          "icon": "/icons/www.135editor.com.png"
+        },
+        {
+          "url": "http://127.0.0.1:8765/skills",
+          "title": "本地技能市场",
+          "description": "本地 AI 技能市场 (Skills Vault)",
+          "icon": "/icons/127.0.0.1.png"
+        },
+        {
+          "url": "https://www.crxsoso.com/",
+          "title": "Crx搜搜",
+          "description": "Chrome 扩展离线下载安装",
+          "icon": "/icons/www.crxsoso.com.png"
         }
       ]
     }
