@@ -9,6 +9,7 @@ interface BookmarkCardProps {
   bookmark: Bookmark
   index: number
   searchQuery?: string
+  privateMode?: boolean
 }
 
 function getDomain(url: string): string {
@@ -25,7 +26,7 @@ const CARD_TINTS = [
   'bg-[#faf8f5]',
 ]
 
-export default function BookmarkCard({ bookmark, index, searchQuery }: BookmarkCardProps) {
+export default function BookmarkCard({ bookmark, index, searchQuery, privateMode = false }: BookmarkCardProps) {
   const domain = getDomain(bookmark.url)
   const iconUrl = `${import.meta.env.BASE_URL}icons/${domain}.png`
   const [imgFailed, setImgFailed] = useState(false)
@@ -46,8 +47,8 @@ export default function BookmarkCard({ bookmark, index, searchQuery }: BookmarkC
       }}
       whileHover={{ y: -2, scale: 1.005 }}
       whileTap={{ scale: 0.99 }}
-      onClick={() => addRecent(bookmark)}
-      className="group block"
+      onClick={privateMode ? undefined : () => addRecent(bookmark)}
+      className="group block rounded-2xl"
     >
       <div className={`
         ${tint}
@@ -67,7 +68,7 @@ export default function BookmarkCard({ bookmark, index, searchQuery }: BookmarkC
           <div className="flex-shrink-0 w-9 h-9 rounded-[10px] bg-white border border-[var(--color-border-whisper)]
             flex items-center justify-center overflow-hidden
             group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)] transition-shadow duration-300">
-            {!imgFailed ? (
+            {!privateMode && !imgFailed ? (
               <img
                 src={iconUrl} alt=""
                 className="w-5 h-5 object-contain"

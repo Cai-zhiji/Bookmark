@@ -1,8 +1,12 @@
 import encrypted from './private-bookmarks.encrypted.json'
 
+export const PRIVATE_CATEGORY = '隐私目录'
+export const PRIVATE_ACCESS_MINUTES = 30
+
 export interface PrivateBookmark {
   title: string
   url: string
+  group?: string
 }
 
 function decodeBase64(value: string) {
@@ -12,6 +16,7 @@ function decodeBase64(value: string) {
 function isPrivateBookmark(value: unknown): value is PrivateBookmark {
   if (!value || typeof value !== 'object' || !('title' in value) || !('url' in value)) return false
   if (typeof value.title !== 'string' || typeof value.url !== 'string') return false
+  if ('group' in value && typeof value.group !== 'string') return false
   const protocol = new URL(value.url).protocol
   return protocol === 'https:' || protocol === 'http:'
 }

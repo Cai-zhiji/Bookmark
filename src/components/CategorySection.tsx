@@ -8,9 +8,10 @@ interface CategorySectionProps {
   eyebrow?: string
   bookmarks: Bookmark[]
   alternateBg?: boolean
+  privateMode?: boolean
 }
 
-export default function CategorySection({ title, eyebrow, bookmarks, alternateBg }: CategorySectionProps) {
+export default function CategorySection({ title, eyebrow, bookmarks, alternateBg, privateMode }: CategorySectionProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -57,7 +58,7 @@ export default function CategorySection({ title, eyebrow, bookmarks, alternateBg
         className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2.5"
       >
         {bookmarks.map((bm, i) => (
-          <BookmarkCard key={bm.url} bookmark={bm} index={i} />
+          <BookmarkCard key={bm.url} bookmark={bm} index={i} privateMode={privateMode} />
         ))}
       </motion.div>
     </section>

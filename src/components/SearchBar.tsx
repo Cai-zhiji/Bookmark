@@ -9,6 +9,7 @@ interface SearchBarProps {
   engine?: SearchEngine
   onEnter?: () => void
   onTabCycle?: () => void
+  placeholder?: string
 }
 
 const ENGINE_PLACEHOLDER: Record<SearchEngine, string> = {
@@ -19,7 +20,7 @@ const ENGINE_PLACEHOLDER: Record<SearchEngine, string> = {
 }
 
 const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
-  function SearchBar({ value, onChange, engine = 'bookmarks', onEnter, onTabCycle }, ref) {
+  function SearchBar({ value, onChange, engine = 'bookmarks', onEnter, onTabCycle, placeholder = ENGINE_PLACEHOLDER[engine] }, ref) {
     const modKey = isMacPlatform() ? '⌘' : 'Ctrl+'
 
     const handleKeyDown = useCallback(
@@ -52,8 +53,8 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={ENGINE_PLACEHOLDER[engine]}
-          aria-label={ENGINE_PLACEHOLDER[engine]}
+          placeholder={placeholder}
+          aria-label={placeholder}
           className="w-full pl-10 pr-12 py-3 text-[15px] leading-[1.4] font-normal
                      bg-white/60 backdrop-blur-md
                      border border-[var(--color-border-whisper)] rounded-2xl

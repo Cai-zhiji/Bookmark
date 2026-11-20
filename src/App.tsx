@@ -1,9 +1,12 @@
-import { useState, useMemo, useCallback, useRef } from 'react'
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
+import { flushSync } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useBookmarks } from './hooks/useBookmarks'
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
 import Sidebar from './components/Sidebar'
 import PrivateBookmarksDialog from './components/PrivateBookmarksDialog'
+import PrivateBookmarkSection from './components/PrivateBookmarkSection'
+import { PRIVATE_ACCESS_MINUTES, PRIVATE_CATEGORY, type PrivateBookmark } from './data/privateBookmarks'
 import Header from './components/Header'
 import SearchBar from './components/SearchBar'
 import SearchEngineToggle from './components/SearchEngineToggle'
@@ -31,10 +34,57 @@ export default function App() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [privateOpen, setPrivateOpen] = useState(false)
+  const [privateSession, setPrivateSession] = useState<{
+    bookmarks: PrivateBookmark[]
+    expiresAt: number
+  } | null>(null)
+  const [privateQuery, setPrivateQuery] = useState('')
   const [loading, setLoading] = useState(true)
   const [searchEngine, setSearchEngine] = useState<SearchEngine>('bookmarks')
   const isSearching = searchEngine === 'bookmarks' && searchQuery.trim().length > 0
   const searchInputRef = useRef<HTMLInputElement>(null)
+  const viewingPrivate = selectedCategory === PRIVATE_CATEGORY && privateSession !== null
+
+  const lockPrivate = useCallback(() => {
+    setPrivateSession(null)
+    setPrivateQuery('')
+    setSelectedCategory((category) => category === PRIVATE_CATEGORY ? null : category)
+  }, [setSelectedCategory])
+
+  useEffect(() => {
+    if (!privateSession) return
+    const expiresAt = privateSession.expiresAt
+    const checkExpiry = () => {
+      if (Date.now() >= expiresAt) lockPrivate()
+    }
+    const onPageHide = () => flushSync(lockPrivate)
+    const expiryTimer = window.setTimeout(lockPrivate, Math.max(0, expiresAt - Date.now()))
+    window.addEventListener('pagehide', onPageHide)
+    window.addEventListener('focus', checkExpiry)
+    document.addEventListener('visibilitychange', checkExpiry)
+    return () => {
+      window.clearTimeout(expiryTimer)
+      window.removeEventListener('pagehide', onPageHide)
+      window.removeEventListener('focus', checkExpiry)
+      document.removeEventListener('visibilitychange', checkExpiry)
+    }
+  }, [privateSession, lockPrivate])
+
+  function openPrivate() {
+    setSidebarOpen(false)
+    if (privateSession && Date.now() < privateSession.expiresAt) {
+      setSelectedCategory(PRIVATE_CATEGORY)
+      return
+    }
+    lockPrivate()
+    setPrivateOpen(true)
+  }
+
+  function unlockPrivate(bookmarks: PrivateBookmark[]) {
+    setPrivateSession({ bookmarks, expiresAt: Date.now() + PRIVATE_ACCESS_MINUTES * 60_000 })
+    setPrivateOpen(false)
+    setSelectedCategory(PRIVATE_CATEGORY)
+  }
 
   const handleLoadingComplete = useCallback(() => setLoading(false), [])
 
@@ -68,9 +118,9 @@ export default function App() {
   // ── Keyboard shortcuts ──
   useKeyboardShortcuts({
     onFocusSearch: () => searchInputRef.current?.focus(),
-    onClearSearch: () => setSearchQuery(''),
+    onClearSearch: () => viewingPrivate ? setPrivateQuery('') : setSearchQuery(''),
     onCloseSidebar: () => setSidebarOpen(false),
-    searchQuery,
+    searchQuery: viewingPrivate ? privateQuery : searchQuery,
     sidebarOpen,
     enabled: !privateOpen,
   })
@@ -118,18 +168,29 @@ export default function App() {
       <Sidebar
         categories={categories}
         selectedCategory={selectedCategory}
-        onSelectCategory={setSelectedCategory}
+        onSelectCategory={(category) => {
+          setPrivateQuery('')
+          setSelectedCategory(category)
+        }}
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
-        onOpenPrivate={() => {
-          setSidebarOpen(false)
-          setPrivateOpen(true)
-        }}
+        onOpenPrivate={openPrivate}
+        privateUnlocked={privateSession !== null}
       />
-      {privateOpen && <PrivateBookmarksDialog onClose={() => setPrivateOpen(false)} />}
+      {privateOpen && <PrivateBookmarksDialog onClose={() => setPrivateOpen(false)} onUnlock={unlockPrivate} />}
 
       {/* Main Content */}
       <main className="relative z-[1] lg:ml-56 min-h-screen">
+        {viewingPrivate ? (
+          <PrivateBookmarkSection
+            bookmarks={privateSession.bookmarks}
+            expiresAt={privateSession.expiresAt}
+            query={privateQuery}
+            onQueryChange={setPrivateQuery}
+            searchInputRef={searchInputRef}
+            onLock={lockPrivate}
+          />
+        ) : (<>
         {/* === Persistent Search Bar (never unmounts — fixes focus loss bug) === */}
         <div className="sticky top-0 z-10 px-4 lg:px-6 pt-6 lg:pt-8 pb-0">
           <div className="max-w-[640px] mx-auto">
@@ -243,6 +304,7 @@ export default function App() {
           )}
         </div>
 
+        </>)}
         <Footer />
         <ScrollToTop />
       </main>

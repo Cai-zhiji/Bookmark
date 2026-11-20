@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import type { Category } from '../types/bookmark'
 import { getCategoryIcon, Lock } from './Icons'
 import { useFocusTrap } from '../hooks/useFocusTrap'
+import { PRIVATE_CATEGORY } from '../data/privateBookmarks'
 
 interface SidebarProps {
   categories: Category[]
@@ -11,6 +12,7 @@ interface SidebarProps {
   isOpen: boolean
   onClose: () => void
   onOpenPrivate: () => void
+  privateUnlocked: boolean
 }
 
 function countAll(categories: Category[]): number {
@@ -41,6 +43,7 @@ const sidebarContent = (
   collapsed: Set<string>,
   onToggle: (name: string) => void,
   onOpenPrivate: () => void,
+  privateUnlocked: boolean,
 ) => (
   <nav className="py-5 px-3">
     {/* Minimal header */}
@@ -202,13 +205,17 @@ const sidebarContent = (
     <div className="my-3 mx-3 border-t border-[var(--color-border-whisper)]" />
     <button
       type="button"
-      aria-haspopup="dialog"
+      aria-haspopup={privateUnlocked ? undefined : 'dialog'}
+      aria-current={selectedCategory === PRIVATE_CATEGORY ? 'true' : undefined}
       onClick={onOpenPrivate}
-      className="w-full text-left px-3 py-1.5 rounded-lg text-[13px] flex items-center gap-2
-        text-[var(--color-text-secondary)] hover:bg-[var(--color-canvas-warm)] hover:text-[var(--color-foreground)]"
+      className={`w-full text-left px-3 py-1.5 rounded-lg text-[13px] flex items-center gap-2
+        hover:bg-[var(--color-canvas-warm)] hover:text-[var(--color-foreground)]
+        ${selectedCategory === PRIVATE_CATEGORY
+          ? 'bg-[var(--color-canvas-warm)] text-[var(--color-foreground)] font-medium'
+          : 'text-[var(--color-text-secondary)]'}`}
     >
       <Lock className="w-3.5 h-3.5 shrink-0" />
-      隐私目录
+      {PRIVATE_CATEGORY}
     </button>
   </nav>
 )
@@ -244,6 +251,7 @@ export default function Sidebar({
   isOpen,
   onClose,
   onOpenPrivate,
+  privateUnlocked,
 }: SidebarProps) {
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set())
   const mobileRef = useFocusTrap(isOpen)
@@ -268,7 +276,7 @@ export default function Sidebar({
         border-r border-[var(--color-border-whisper)] bg-[var(--color-canvas)]/90 backdrop-blur-xl
         z-20 overflow-y-auto"
       >
-        {sidebarContent(categories, selectedCategory, onSelectCategory, onClose, collapsed, toggleCategory, onOpenPrivate)}
+        {sidebarContent(categories, selectedCategory, onSelectCategory, onClose, collapsed, toggleCategory, onOpenPrivate, privateUnlocked)}
       </aside>
 
       {/* Mobile drawer */}
@@ -297,7 +305,7 @@ export default function Sidebar({
                 border-[var(--color-border-whisper)] z-40 lg:hidden overflow-y-auto
                 shadow-[var(--shadow-deep)]"
             >
-              {sidebarContent(categories, selectedCategory, onSelectCategory, onClose, collapsed, toggleCategory, onOpenPrivate)}
+              {sidebarContent(categories, selectedCategory, onSelectCategory, onClose, collapsed, toggleCategory, onOpenPrivate, privateUnlocked)}
             </motion.aside>
           </>
         )}
