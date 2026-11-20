@@ -44,6 +44,30 @@
           "title": "Skills.sh 趋势",
           "description": "AI 技能市场热门趋势",
           "icon": "/icons/www.skills.sh.png"
+        },
+        {
+          "url": "https://aistudio.google.com/prompts/new_chat",
+          "title": "Google AI Studio",
+          "description": "在 Google AI Studio 中试用 Gemini 模型和提示词",
+          "icon": "/icons/aistudio.google.com.png"
+        },
+        {
+          "url": "https://skillhub.cn/",
+          "title": "SkillHub",
+          "description": "浏览和搜索 AI Agent 技能",
+          "icon": "/icons/skillhub.cn.png"
+        },
+        {
+          "url": "https://lm.ikale.io/#/",
+          "title": "Fingerpoint Detector",
+          "description": "通过模型指纹检测识别 AI 模型",
+          "icon": "/icons/lm.ikale.io.png"
+        },
+        {
+          "url": "https://gpt-image2.canghe.ai/",
+          "title": "GPT-Image2 Prompt Gallery",
+          "description": "浏览 GPT-Image2 图像提示词示例",
+          "icon": "/icons/gpt-image2.canghe.ai.png"
         }
       ]
     },
@@ -67,6 +91,12 @@
           "title": "识典古籍",
           "description": "古籍数字化在线阅读平台",
           "icon": "/icons/www.shidianguji.com.png"
+        },
+        {
+          "url": "https://ctext.org/wiki.pl?if=gb&remap=gb&res=571829",
+          "title": "古今医案按",
+          "description": "中国哲学书电子化计划收录的中医医案",
+          "icon": "/icons/ctext.org.png"
         }
       ]
     },
@@ -218,6 +248,23 @@
           ]
         },
         {
+          "name": "设计",
+          "bookmarks": [
+            {
+              "url": "https://dribbble.com/",
+              "title": "Dribbble",
+              "description": "浏览设计师作品和界面设计灵感",
+              "icon": "/icons/dribbble.com.png"
+            },
+            {
+              "url": "https://www.ui-skills.com/",
+              "title": "UI Skills",
+              "description": "面向设计工程师的界面技能与规范",
+              "icon": "/icons/www.ui-skills.com.png"
+            }
+          ]
+        },
+        {
           "name": "游戏",
           "bookmarks": [
             {
@@ -237,6 +284,12 @@
               "title": "OP.GG",
               "description": "英雄联盟数据与攻略",
               "icon": "/icons/op.gg.png"
+            },
+            {
+              "url": "https://moligod.com/ammo-realtime",
+              "title": "三角洲行动实时子弹价格",
+              "description": "查看《三角洲行动》游戏内弹药的实时行情",
+              "icon": "/icons/moligod.com.png"
             }
           ]
         },
@@ -302,6 +355,12 @@
               "title": "国家数字图书馆标准",
               "description": "国家数字图书馆标准检索",
               "icon": "/icons/www.ndls.org.cn.png"
+            },
+            {
+              "url": "https://ctext.org/zhs",
+              "title": "中国哲学书电子化计划",
+              "description": "检索与阅读中国古籍的数字图书馆",
+              "icon": "/icons/ctext.org.png"
             }
           ]
         },
@@ -498,6 +557,18 @@
           "title": "Crx搜搜",
           "description": "Chrome 扩展离线下载安装",
           "icon": "/icons/www.crxsoso.com.png"
+        },
+        {
+          "url": "https://ippure.com/",
+          "title": "IPPure",
+          "description": "查询公网 IP 地址和网络属性",
+          "icon": "/icons/ippure.com.png"
+        },
+        {
+          "url": "https://pele.run/",
+          "title": "Pele",
+          "description": "将 Mermaid 图表导出为可自定义主题的 SVG",
+          "icon": "/icons/pele.run.png"
         }
       ]
     }
