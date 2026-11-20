@@ -68,6 +68,12 @@
           "title": "GPT-Image2 Prompt Gallery",
           "description": "浏览 GPT-Image2 图像提示词示例",
           "icon": "/icons/gpt-image2.canghe.ai.png"
+        },
+        {
+          "url": "https://results-grab-5p1.craft.me/pvvfU2sQsVVyRH",
+          "title": "GPT Team 购买与使用指南",
+          "description": "介绍 GPT Team 的购买与使用方式",
+          "icon": "/icons/results-grab-5p1.craft.me.png"
         }
       ]
     },
@@ -261,6 +267,12 @@
               "title": "UI Skills",
               "description": "面向设计工程师的界面技能与规范",
               "icon": "/icons/www.ui-skills.com.png"
+            },
+            {
+              "url": "https://jp.pinterest.com/search/pins/?q=ui%20ux%20design&rs=guide&journey_depth=1&source_module_id=OB_ui%2520ux%2520design_01f6a2bf-9df2-4bbd-a6b8-4fb8ace9f01f&add_refine=Ux%20design%7Cguide%7Cword%7C2",
+              "title": "Pinterest · UI/UX 设计",
+              "description": "浏览 UI/UX 设计灵感和参考作品",
+              "icon": "/icons/jp.pinterest.com.png"
             }
           ]
         },
