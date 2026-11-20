@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { Category } from '../types/bookmark'
-import { getCategoryIcon } from './Icons'
+import { getCategoryIcon, Lock } from './Icons'
 import { useFocusTrap } from '../hooks/useFocusTrap'
 
 interface SidebarProps {
@@ -10,6 +10,7 @@ interface SidebarProps {
   onSelectCategory: (name: string | null) => void
   isOpen: boolean
   onClose: () => void
+  onOpenPrivate: () => void
 }
 
 function countAll(categories: Category[]): number {
@@ -39,6 +40,7 @@ const sidebarContent = (
   onClose: () => void,
   collapsed: Set<string>,
   onToggle: (name: string) => void,
+  onOpenPrivate: () => void,
 ) => (
   <nav className="py-5 px-3">
     {/* Minimal header */}
@@ -196,6 +198,18 @@ const sidebarContent = (
         </div>
       )
     })}
+
+    <div className="my-3 mx-3 border-t border-[var(--color-border-whisper)]" />
+    <button
+      type="button"
+      aria-haspopup="dialog"
+      onClick={onOpenPrivate}
+      className="w-full text-left px-3 py-1.5 rounded-lg text-[13px] flex items-center gap-2
+        text-[var(--color-text-secondary)] hover:bg-[var(--color-canvas-warm)] hover:text-[var(--color-foreground)]"
+    >
+      <Lock className="w-3.5 h-3.5 shrink-0" />
+      隐私目录
+    </button>
   </nav>
 )
 
@@ -229,6 +243,7 @@ export default function Sidebar({
   onSelectCategory,
   isOpen,
   onClose,
+  onOpenPrivate,
 }: SidebarProps) {
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set())
   const mobileRef = useFocusTrap(isOpen)
@@ -253,7 +268,7 @@ export default function Sidebar({
         border-r border-[var(--color-border-whisper)] bg-[var(--color-canvas)]/90 backdrop-blur-xl
         z-20 overflow-y-auto"
       >
-        {sidebarContent(categories, selectedCategory, onSelectCategory, onClose, collapsed, toggleCategory)}
+        {sidebarContent(categories, selectedCategory, onSelectCategory, onClose, collapsed, toggleCategory, onOpenPrivate)}
       </aside>
 
       {/* Mobile drawer */}
@@ -282,7 +297,7 @@ export default function Sidebar({
                 border-[var(--color-border-whisper)] z-40 lg:hidden overflow-y-auto
                 shadow-[var(--shadow-deep)]"
             >
-              {sidebarContent(categories, selectedCategory, onSelectCategory, onClose, collapsed, toggleCategory)}
+              {sidebarContent(categories, selectedCategory, onSelectCategory, onClose, collapsed, toggleCategory, onOpenPrivate)}
             </motion.aside>
           </>
         )}

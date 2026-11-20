@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useBookmarks } from './hooks/useBookmarks'
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
 import Sidebar from './components/Sidebar'
+import PrivateBookmarksDialog from './components/PrivateBookmarksDialog'
 import Header from './components/Header'
 import SearchBar from './components/SearchBar'
 import SearchEngineToggle from './components/SearchEngineToggle'
@@ -29,6 +30,7 @@ export default function App() {
   } = useBookmarks()
 
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [privateOpen, setPrivateOpen] = useState(false)
   const [loading, setLoading] = useState(true)
   const [searchEngine, setSearchEngine] = useState<SearchEngine>('bookmarks')
   const isSearching = searchEngine === 'bookmarks' && searchQuery.trim().length > 0
@@ -70,6 +72,7 @@ export default function App() {
     onCloseSidebar: () => setSidebarOpen(false),
     searchQuery,
     sidebarOpen,
+    enabled: !privateOpen,
   })
 
   // Group bookmarks by subcategory when showing all
@@ -118,7 +121,12 @@ export default function App() {
         onSelectCategory={setSelectedCategory}
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
+        onOpenPrivate={() => {
+          setSidebarOpen(false)
+          setPrivateOpen(true)
+        }}
       />
+      {privateOpen && <PrivateBookmarksDialog onClose={() => setPrivateOpen(false)} />}
 
       {/* Main Content */}
       <main className="relative z-[1] lg:ml-56 min-h-screen">

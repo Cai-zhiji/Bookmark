@@ -11,6 +11,7 @@ interface ShortcutHandlers {
   searchQuery: string
   /** Whether sidebar is open */
   sidebarOpen: boolean
+  enabled: boolean
 }
 
 export function useKeyboardShortcuts({
@@ -19,6 +20,7 @@ export function useKeyboardShortcuts({
   onCloseSidebar,
   searchQuery,
   sidebarOpen,
+  enabled,
 }: ShortcutHandlers) {
   // Track whether the meta key was pressed (to avoid stuck-modifier issues)
   const metaPressed = useRef(false)
@@ -62,13 +64,14 @@ export function useKeyboardShortcuts({
   }, [])
 
   useEffect(() => {
+    if (!enabled) return
     window.addEventListener('keydown', handleKeyDown)
     window.addEventListener('keyup', handleKeyUp)
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
       window.removeEventListener('keyup', handleKeyUp)
     }
-  }, [handleKeyDown, handleKeyUp])
+  }, [enabled, handleKeyDown, handleKeyUp])
 }
 
 /** Detect whether the user is on macOS (for showing ⌘ vs Ctrl in hints) */
